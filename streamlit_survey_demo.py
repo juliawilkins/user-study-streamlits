@@ -50,6 +50,6 @@ with survey.pages(31) as page:
         if page.current == 30:
             st.markdown(":warning: :red[Please make your final selection above and then **download your survey data** using the button below. Finally, email your results (found in 'sound_user_survey_results.json' to jwilkins@adobe.com. Thank you for participating!]")
 
-            """#### Export survey data"""
+            """#### Download survey data"""
             survey.download_button("Download Survey Data", file_name='sound_user_survey_results.json', use_container_width=True)
 
