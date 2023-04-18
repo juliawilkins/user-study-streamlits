@@ -26,9 +26,11 @@ with survey.pages(31) as page:
        page.disable_next=False
        st.title("User Study :notes: :video_camera:")
        st.markdown("<h5> Instructions</h5>", unsafe_allow_html=True)
-       st.markdown("<b>Please make sure your computer sound is on for this study</b> and that you are in a quiet environment. <b>Please use headphones </b> :headphones: to ensure you hear the audio properly (please avoid laptop/phone speakers).</p><p> This form contains 30 questions. Each question includes two videos with sound, labeled 1 and 2. The videos contain the same still image, but the sound in each video is different. For each question, please listen to both videos and <b>select the video in which the sound is a better match for the image in the video and press submit</b>. For example, if the image in the video is of a cow, and video 1 has the sound of a cow moo and video 2 has the sound of cat meowing, you should select video 1. It’s possible for both videos to have sounds that are relevant (or irrelevant) to the image, in this case please select the video with the sound you feel is the best match for the image. Thank you for your time!", unsafe_allow_html=True)
+       st.markdown("<b>Please make sure you are using Google Chrome and that your computer sound is on for this study. </b> Please ensure that you are in a quiet environment and <b> use headphones </b> :headphones: to ensure you hear the audio properly (please avoid laptop/phone speakers).</p><p> This form contains 30 questions. Each question includes two videos with sound, labeled 1 and 2. The videos contain the same still image, but the sound in each video is different. For each question, please listen to both videos and <b>select the video in which the sound is a better match for the image in the video and press submit</b>. For example, if the image in the video is of a cow, and video 1 has the sound of a cow moo and video 2 has the sound of cat meowing, you should select video 1. It’s possible for both videos to have sounds that are relevant (or irrelevant) to the image, in this case please select the video with the sound you feel is the best match for the image. Thank you for your time!", unsafe_allow_html=True)
+       st.markdown("<h7> Expected completion time: ~10 minutes.</h7>", unsafe_allow_html=True)
+
        st.markdown(":warning: :red[At the end of the survey, please be sure to **export your survey data** using the instructions on the final page. Thank you for participating!]")
-    
+
     else:
         first_video = participant_videos.iloc[page.current-1].first_video_path
         second_video = participant_videos.iloc[page.current-1].second_video_path
