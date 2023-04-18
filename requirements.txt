@@ -37,7 +37,7 @@ rich==13.3.4
 six==1.16.0
 smmap==5.0.0
 streamlit==1.21.0
--e git+https://github.com/juliawilkins/user-study-streamlits.git@27ffe37d8d805d4a51ebfa6c44bbfc636498ac50#egg=streamlit_survey&subdirectory=streamlit_survey_main
+-e git+https://github.com/juliawilkins/user-study-streamlits.git@c1936b7a0cfbf3ba41869558601b0da9ec2cdb04#egg=streamlit_survey&subdirectory=streamlit_survey_main
 toml==0.10.2
 toolz==0.12.0
 tornado==6.2
