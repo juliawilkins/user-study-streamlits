@@ -18,11 +18,12 @@ pse_samp = pse_videos.sample(n=15, random_state=st.session_state["seed"])
 participant_videos = pd.concat([ave_samp, pse_samp])
 participant_videos = participant_videos.sample(frac=1, random_state=st.session_state["seed"])
 
-survey = StreamlitSurvey()
+survey = StreamlitSurvey(disable_next=True)
 
 with survey.pages(31) as page:
 
     if page.current == 0:
+       page.disable_next=False
        st.title("User Study :notes: :video_camera:")
        st.markdown("<h5> Instructions</h5>", unsafe_allow_html=True)
        st.markdown("<b>Please make sure your computer sound is on for this study</b> and that you are in a quiet environment. <b>Please use headphones </b> :headphones: to ensure you hear the audio properly (please avoid laptop/phone speakers).</p><p> This form contains 30 questions. Each question includes two videos with sound, labeled 1 and 2. The videos contain the same still image, but the sound in each video is different. For each question, please listen to both videos and <b>select the video in which the sound is a better match for the image in the video and press submit</b>. For example, if the image in the video is of a cow, and video 1 has the sound of a cow moo and video 2 has the sound of cat meowing, you should select video 1. It’s possible for both videos to have sounds that are relevant (or irrelevant) to the image, in this case please select the video with the sound you feel is the best match for the image. Thank you for your time!", unsafe_allow_html=True)
@@ -47,6 +48,11 @@ with survey.pages(31) as page:
         result = survey.selectbox("Use the dropdown below:", options=["----", "Video 1", "Video 2"],
                 id=f"RESP_{page.current-1}_VID1={participant_videos.iloc[page.current-1].first_video_uid}_VID2={participant_videos.iloc[page.current-1].second_video_uid}_DATASET={participant_videos.iloc[page.current-1].dataset}")
         
+        if result == '----':
+            st.warning("Select 'Video 1' or 'Video 2' from the dropdown above.")
+        else:
+            page.disable_next=False
+
         if page.current == 30:
             st.markdown(":warning: :red[Please make your final selection above and then **download your survey data** using the button below. Finally, email your results (found in 'sound_user_survey_results.json' to jwilkins@adobe.com. Thank you for participating!]")
 
